@@ -1,0 +1,435 @@
+Microsoft Windows [Versión 10.0.17763.292]
+(c) 2018 Microsoft Corporation. Todos los derechos reservados.
+
+C:\Users\Usuario>mysqlsh
+MySQL Shell 8.0.17
+
+Copyright (c) 2016, 2019, Oracle and/or its affiliates. All rights reserved.
+Oracle is a registered trademark of Oracle Corporation and/or its affiliates.
+Other names may be trademarks of their respective owners.
+
+Type '\help' or '\?' for help; '\quit' to exit.
+ MySQL  JS > \sql
+Switching to SQL mode... Commands end with ;
+ MySQL  SQL > \connect- mc root@localhost
+Unknown command: '\connect- mc root@localhost'
+ MySQL  SQL > \connect --mc root@localhost
+Creating a Classic session to 'root@localhost'
+Please provide the password for 'root@localhost': ******************
+Save password for 'root@localhost'? [Y]es/[N]o/Ne[v]er (default No): n
+Fetching schema names for autocompletion... Press ^C to stop.
+Your MySQL connection id is 8
+Server version: 8.0.17 MySQL Community Server - GPL
+No default schema selected; type \use <schema> to set one.
+ MySQL  localhost:3306 ssl  SQL > use eva_1;
+Default schema set to `eva_1`.
+Fetching table and column names from `eva_1` for auto-completion... Press ^C to stop.
+ MySQL  localhost:3306 ssl  eva_1  SQL > show tables;
++--------------------+
+| Tables_in_eva_1    |
++--------------------+
+| alumnos            |
+| carreras           |
+| country            |
+| materias           |
+| materias2          |
+| paises             |
+| prueba             |
+| prueba_copia       |
+| prueba_copia_datos |
+| subjects           |
++--------------------+
+10 rows in set (0.0029 sec)
+ MySQL  localhost:3306 ssl  eva_1  SQL > create table clientes(
+                                      -> cliente_id int auto_increment key not null,
+                                      -> nombre varchar(50));
+Query OK, 0 rows affected (0.6899 sec)
+ MySQL  localhost:3306 ssl  eva_1  SQL > create table ventas(
+                                      -> ventas_id int not null auto_increment key,
+                                      -> cliente_id int not null
+                                      -> foreing key references clientes(cliente_id)
+                                      -> on delete cascade
+                                      -> on update cascade;
+ERROR: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'foreing key references clientes(cliente_id)
+on delete cascade
+on update cascade' at line 4
+ MySQL  localhost:3306 ssl  eva_1  SQL > create table ventas( ventas_id int not null auto_increment key, cliente_id int not null, foreing key(cliente_id) references clientes(cliente_id) on delete cascade on update cascade;
+ERROR: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'key(cliente_id) references clientes(cliente_id) on delete cascade on update casc' at line 1
+ MySQL  localhost:3306 ssl  eva_1  SQL > create table ventas( ventas_id int not null auto_increment key, cliente_id int not null foreing key references clientes(cliente_id) on delete cascade on update cascade
+                                      ->
+                                      ->
+                                      -> ;
+ERROR: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'foreing key references clientes(cliente_id) on delete cascade on update cascade' at line 1
+ MySQL  localhost:3306 ssl  eva_1  SQL > create table ventas( ventas_id int not null auto_increment key, cliente_id int not null foreing key references clientes(cliente_id) on delete cascade on update cascade) ;
+ERROR: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'foreing key references clientes(cliente_id) on delete cascade on update cascade)' at line 1
+ MySQL  localhost:3306 ssl  eva_1  SQL > create table ventas( ventas_id int not null auto_increment key, cliente_id int not null, foreing key(cliente_id) references clientes(cliente_id) on delete cascade on update cascade) ;
+ERROR: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'key(cliente_id) references clientes(cliente_id) on delete cascade on update casc' at line 1
+ MySQL  localhost:3306 ssl  eva_1  SQL > create table ventas( ventas_id int not null auto_increment key, cliente_id int not null, foreing key(cliente_id) references clientes(cliente_id) on delete cascade on update cascade);
+ERROR: 1064 (42000): You have an error increate table ventas( venta_id int  auto_increment not null, foreing key(cliente_id) references cliende); use near 'key(cliente_ERROR: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'key(cliente_id) references cliende)' at line 1 SQL > create table ventas( venta_id int  auto_increment not null, foreing key(cliente_id) references clientde); te_id) references cli MySQL  localhost:3306 ssl  eva_1  SQL > create table ventas( venta_id int  auto_increment not null, foreing key(cliente_id) references clientede);
+ MySQL  localhost:3306 ssl  eva_1  SQL > create table ventas( venta_id int  auto_increment not null, foreing key(cliente_id) references clientesde);  near 'key(cliente_ MySQL  localhost:3306 ssl  eva_1  SQL > create table ventas( venta_id int  auto_increment not null, foreing key(cliente_id) references clientes(de);
+ MySQL  localhost:3306 ssl  eva_1  SQL > create table ventas( venta_id int  auto_increment not null, foreing key(cliente_id) references clientes(cde); ) references cli
+ MySQL  localhost:3306 ssl  eva_1  SQL > create table ventas( venta_id int  auto_increment not null, foreing key(cliente_id) references clientes(clde); eferences clie
+ MySQL  localhost:3306 ssl  eva_1  SQL > create table ventas( venta_id int  auto_increment not null, foreing key(cliente_id) references clientes(clide);  not null auto_ MySQL  localhost:3306 ssl  eva_1  SQL > create table ventas( venta_id int  auto_increment not null, foreing key(cliente_id) references clientes(cliede); t null auto_in MySQL  localhost:3306 ssl  eva_1  SQL > create table ventas( venta_id int  auto_increment not null, foreing key(cliente_id) references clientes(cliende); ull auto_incr MySQL  localhost:3306 ssl  eva_1  SQL > create table ventas( venta_id int  auto_increment not null, foreing key(cliente_id) references clientes(clientde);  auto_increm MySQL  localhost:3306 ssl  eva_1  SQL > create table ventas( venta_id int  auto_increment not null, foreing key(cliente_id) references clientes(clientede); to_incremen MySQL  localhost:3306 ssl  eva_1  SQL > create table ventas( venta_id int  auto_increment not null, foreing key(cliente_id) references clientes(cliente_de); increment
+ MySQL  localhost:3306 ssl  eva_1  SQL > create table ventas( venta_id int  auto_increment not null, foreing key(cliente_id) references clientes(cliente_ide); rement ke MySQL  localhost:3306 ssl  eva_1  SQL > create table ventas( venta_id int  auto_increment not null, foreing key(cliente_id) references clientes(cliente_idde); ent key, MySQL  localhost:3306 ssl  eva_1  SQL > create table ventas( venta_id int  auto_increment not null, foreing key(cliente_id) references clientes(cliente_id)de);  key,cl MySQL  localhost:3306 ssl  eva_1  SQL > create table ventas( venta_id int  auto_increment not null, foreing key(cliente_id) references clientes(cliente_id) de); y,clie MySQL  localhost:3306 ssl  eva_1  SQL > create table ventas( venta_id int  auto_increment not null, foreing key(cliente_id) references clientes(cliente_id) ode); lient MySQL  localhost:3306 ssl  eva_1  SQL > create table ventas( venta_id int  auto_increment not null, foreing key(cliente_id) references clientes(cliente_id) onde); nte_ MySQL  localhost:3306 ssl  eva_1  SQL > create table ventas( venta_id int  auto_increment not null, foreing key(cliente_id) references clientes(cliente_id) on de); _id MySQL  localhost:3306 ssl  eva_1  SQL > create table ventas( venta_id int  auto_increment not null, foreing key(cliente_id) references clientes(cliente_id) on dde);  i MySQL  localhost:3306 ssl  eva_1  SQL > create table ventas( venta_id int  auto_increment not null, foreing key(cliente_id) references clientes(cliente_id) on dede); t MySQL  localhost:3306 ssl  eva_1  SQL > not null auto_increment key,cliente_id int not nucreate table ventas (venta_id int not null auto_increment key,cliente_id int n MySQL  localhost:3306 ssl  eva_1  SQL > create table ventas( venta_id int  auto_increment not null, foreing key(cliente_id) references clientes(cliente_id) on delde);
+ MySQL  localhost:3306 ssl  eva_1  SQL > null auto_increment key,cliente_id int not nucreate table ventas (venta_id int not null auto_increment key,cliente_id int not n MySQL  localhost:3306 ssl  eva_1  SQL > create table ventas( venta_id int  auto_increment not null, foreing key(cliente_id) references clientes(cliente_id) on delede); MySQL  localhost:3306 ssl  eva_1  SQL > create table ventas( venta_id int  auto_increment not null, foreing key(cliente_id) references clientes(cliente_id) on deletde) MySQL  localhost:3306 ssl  eva_1  SQL > create table ventas( venta_id int  auto_increment not null, foreing key(cliente_id) references clientes(cliente_id) on deletede MySQL  localhost:3306 ssl  eva_1  SQL > create table ventas( venta_id int  auto_increment not null, foreing key(cliente_id) references clientes(cliente_id) on delete d MySQL  localhost:3306 ssl  eva_1  SQL > create table ventas( venta_id int  auto_increment not null, foreing key(cliente_id) references clientes(cliente_id) on delete c MySQL  localhost:3306 ssl  eva_1  SQL > create table ventas( venta_id int  auto_increment not null, foreing key(cliente_id) references clientes(cliente_id) on delete c MySQL  localhost:3306 ssl  eva_1  SQL > create table ventas( venta_id int  auto_increment not null, foreing key(cliente_id) references clientes(cliente_id) on delete c MySQL  localhost:3306 ssl  eva_1  SQL > create table ventas( venta_id int  auto_increment not null, foreing key(cliente_id) references clientes(cliente_id) on delete c MySQL  localhost:3306 ssl  eva_1  SQL > create table ventas( venta_id int  auto_increment not null, foreing key(cliente_id) references clientes(cliente_id) on delete c MySQL  localhost:3306 ssl  eva_1  SQL > create table ventas( venta_id int  auto_increment not null, foreing key(cliente_id) references clientes(cliente_id) on delete c MySQL  localhost:3306 ssl  eva_1  SQL > create table ventas( venta_id int  auto_increment not null, foreing key(cliente_id) references clientes(cliente_id) on delete c MySQL  localhost:3306 ssl  eva_1  SQL > create table ventas( venta_id int  auto_increment not null, foreing key(cliente_id) references clientes(cliente_id) on delete c MySQL  localhost:3306 ssl  eva_1  SQL > create table ventas( venta_id int  auto_increment not null, foreing key(cliente_id) references clientes(cliente_id) on delete c MySQL  localhost:3306 ssl  eva_1  SQL > create table ventas( venta_id int  auto_increment not null, foreing key(cliente_id) references clientes(cliente_id) on delete c MySQL  localhost:3306 ssl  eva_1  SQL > create table ventas( venta_id int  auto_increment not null, foreing key(cliente_id) references clientes(cliente_id) on delete c MySQL  localhost:3306 ssl  eva_1  SQL > create table ventas( venta_id int  auto_increment not null, foreing key(cliente_id) references clientes(cliente_id) on delete c MySQL  localhost:3306 ssl  eva_1  SQL > create table ventas( venta_id int  auto_increment not null, foreing key(cliente_id) references clientes(cliente_id) on delete c MySQL  localhost:3306 ssl  eva_1  SQL > create table ventas( venta_id int  auto_increment not null, foreing key(cliente_id) references clientes(cliente_id) on delete c MySQL  localhost:3306 ssl  eva_1  SQL > create table ventas( venta_id int  auto_increment not null, foreing key(cliente_id) references clientes(cliente_id) on delete c MySQL  localhost:3306 ssl  eva_1  SQL > create table ventas( venta_id int  auto_increment not null, foreing key(cliente_id) references clientes(cliente_id) on delete c MySQL  localhost:3306 ssl  eva_1  SQL > create table ventas( venta_id int  auto_increment not null, foreing key(cliente_id) references clientes(cliente_id) on delete c MySQL  localhost:3306 ssl  eva_1  SQL > create table ventas( venta_id int  auto_increment not null, foreing key(cliente_id) references clientes(cliente_id) on delete c MySQL  localhost:3306 ssl  eva_1  SQL > create table ventas( venta_id int  auto_increment not null, foreing key(cliente_id) references clientes(cliente_id) on delete c MySQL  localhost:3306 ssl  eva_1  SQL > create table ventas( venta_id int  auto_increment not null, foreing key(cliente_id) references clientes(cliente_id) on delete c MySQL  localhost:3306 ssl  eva_1  SQL > create table ventas( venta_id int  auto_increment not null, foreing key(cliente_id) references clientes(cliente_id) on delete c MySQL  localhost:3306 ssl  eva_1  SQL > create table ventas( venta_id int  auto_increment not null, foreing key(cliente_id) references clientes(cliente_id) on delete c MySQL  localhost:3306 ssl  eva_1  SQL > create table ventas( venta_id int  auto_increment not null, foreing key(cliente_id) references clientes(cliente_id) on delete c MySQL  localhost:3306 ssl  eva_1  SQL > create table ventas( venta_id int  auto_increment not null, foreing key(cliente_id) references clientes(cliente_id) on delete c MySQL  localhost:3306 ssl  eva_1  SQL > create table ventas( venta_id int  auto_increment not null, foreing key(cliente_id) references clientes(cliente_id) on delete c MySQL  localhost:3306 ssl  eva_1  SQL > create table ventas( venta_id int  auto_increment not null, foreing key(cliente_id) references clientes(cliente_id) on delete c MySQL  localhost:3306 ssl  eva_1  SQL > create table ventas( venta_id int  auto_increment not null, foreing key(cliente_id) references clientes(cliente_id) on delete c MySQL  localhost:3306 ssl  eva_1  SQL > create table ventas( venta_id int  auto_increment not null, foreing key(cliente_id) references clientes(cliente_id) on delete c MySQL  localhost:3306 ssl  eva_1  SQL > create table ventas( venta_id int  auto_increment not null, foreing key(cliente_id) references clientes(cliente_id) on delete c MySQL  localhost:3306 ssl  eva_1  SQL > create table ventas( venta_id int  auto_increment not null, foreing key(cliente_id) references clientes(cliente_id) on delete c MySQL  localhost:3306 ssl  eva_1  SQL > create table ventas( venta_id int  auto_increment not null, foreing key(cliente_id) references clientes(cliente_id) on delete c MySQL  localhost:3306 ssl  eva_1  SQL > create table ventas( venta_id int  auto_increment not null, foreing key(cliente_id) references clientes(cliente_id) on delete c MySQL  localhost:3306 ssl  eva_1  SQL > create table ventas( venta_id int  auto_increment not null, foreing key(cliente_id) references clientes(cliente_id) on delete c MySQL  localhost:3306 ssl  eva_1  SQL > create table ventas( venta_id int  auto_increment not null, foreing key(cliente_id) references clientes(cliente_id) on delete c MySQL  localhost:3306 ssl  eva_1  SQL > create table ventas( venta_id int  auto_increment not null, foreing key(cliente_id) references clientes(cliente_id) on delete c MySQL  localhost:3306 ssl  eva_1  SQL > create table ventas( venta_id int  auto_increment not null, foreing key(cliente_id) references clientes(cliente_id) on delete c MySQL  localhost:3306 ssl  eva_1  SQL > create table ventas( venta_id int  auto_increment not null, foreing key(cliente_id) references clientes(cliente_id) on delete c MySQL  localhost:3306 ssl  eva_1  SQL >
+ MySQL  localhost:3306 ssl  eva_1  SQL >
+ MySQL  localhost:3306 ssl  eva_1  SQL >
+ MySQL  localhost:3306 ssl  eva_1  SQL >
+ MySQL  localhost:3306 ssl  eva_1  SQL >
+ MySQL  localhost:3306 ssl  eva_1  SQL >
+ MySQL  localhost:3306 ssl  eva_1  SQL >
+ MySQL  localhost:3306 ssl  eva_1  SQL >
+ MySQL  localhost:3306 ssl  eva_1  SQL >
+ MySQL  localhost:3306 ssl  eva_1  SQL >
+ MySQL  localhost:3306 ssl  eva_1  SQL > create table ventas( venta_id int  auto_increment not null, foreing key(cliente_id) references clientes(cliente_id) on delete cascade on update cascade);
+ERROR: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'key(cliente_id) references clientes(cliente_id) on delete cascade on update casc' at line 1
+ MySQL  localhost:3306 ssl  eva_1  SQL > \quit
+Bye!
+
+C:\Users\Usuario>mysqlsh
+MySQL Shell 8.0.17
+
+Copyright (c) 2016, 2019, Oracle and/or its affiliates. All rights reserved.
+Oracle is a registered trademark of Oracle Corporation and/or its affiliates.
+Other names may be trademarks of their respective owners.
+
+Type '\help' or '\?' for help; '\quit' to exit.
+ MySQL  JS > \sql
+Switching to SQL mode... Commands end with ;
+ MySQL  SQL > \connect --mc root@localhost
+Creating a Classic session to 'root@localhost'
+Please provide the password for 'root@localhost': ******************
+Save password for 'root@localhost'? [Y]es/[N]o/Ne[v]er (default No): n
+Fetching schema names for autocompletion... Press ^C to stop.
+Your MySQL connection id is 9
+Server version: 8.0.17 MySQL Community Server - GPL
+No default schema selected; type \use <schema> to set one.
+ MySQL  localhost:3306 ssl  SQL > use eva_1;
+Default schema set to `eva_1`.
+Fetching table and column names from `eva_1` for auto-completion... Press ^C to stop.
+ MySQL  localhost:3306 ssl  eva_1  SQL > show tables;
++--------------------+
+| Tables_in_eva_1    |
++--------------------+
+| alumnos            |
+| carreras           |
+| clientes           |
+| country            |
+| materias           |
+| materias2          |
+| paises             |
+| prueba             |
+| prueba_copia       |
+| prueba_copia_datos |
+| subjects           |
++--------------------+
+11 rows in set (0.0024 sec)
+ MySQL  localhost:3306 ssl  eva_1  SQL > create table venta(
+                                      -> venta_id int not null auto_increment key,
+                                      -> cliente_id int not null, foreing key(cliente_id) references clientes(cliente_id) on delete cascade on update cascade);
+ERROR: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'key(cliente_id) references clientes(cliente_id) on delete cascade on update casc' at line 3
+ MySQL  localhost:3306 ssl  eva_1  SQL > create table venta( venta_id int not null auto_increment key, cliente_id int not nucreate table venta( venta_id int not null auto_increment key, cliente_id int not nushow tables;
++--------------------+
+| Tables_in_eva_1    |
++--------------------+
+| alumnos            |
+| carreras           |
+| clientes           |
+| country            |
+| materias           |
+| materias2          |
+| paises             |
+| prueba             |
+| prueba_copia       |
+| prueba_copia_datos |
+| subjects           |
++--------------------+
+11 rows in set (0.0034 sec)              create table venta( venta_id int not null auto_increment key, cliente_id int not null, foreing key(cliente_id) references clientes(cliente_id) on delete cascade on update cascade); venta( venta_id int not null auto_increment key, cliente_id int not null, foreing key(cliente_id) references clien
+ERROR: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'key(cliente_id) references clientes(cliente_id) on delete cascade on update casc' at line 1
+ MySQL  localhost:3306 ssl  eva_1  SQL > create table venta( venta_id int not null auto_increment key, cliente_id int not null, foreing key(cliente_id) references clientes(cliente_id) on delete cascade on update cascade);
+ERROR: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'key(cliente_id) references clientes(cliente_id) on delete cascade on update casc' at line 1
+ MySQL  localhost:3306 ssl  eva_1  SQL > show create table clientes;
++----------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Table    | Create Table                                                                                                                                                                                                   |
++----------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| clientes | CREATE TABLE `clientes` (
+  `cliente_id` int(11) NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`cliente_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci |
++----------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+1 row in set (0.0831 sec)
+ MySQL  localhost:3306 ssl  eva_1  SQL > create table venta( venta_id int not null auto_increment key, cliente_id int, foreing key(cliente_id) references clientes(cliente_id) on delete cascade on update cascade);
+ERROR: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'key(cliente_id) references clientes(cliente_id) on delete cascade on update casc' at line 1
+ MySQL  localhost:3306 ssl  eva_1  SQL > create table venta( venta_id int not null auto_increment key, cliente_id int not null, foreing key(cliente_id) references clientes(cliente_id) on delete cascade on update cascade);
+ERROR: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'key(cliente_id) references clientes(cliente_id) on delete cascade on update casc' at line 1
+ MySQL  localhost:3306 ssl  eva_1  SQL > create table ventas( venta_id int not null auto_increment key, cliente_id int not null, foreing key(cliente_id) references clientes(cliente_id) on delete cascade on update cascade);
+ERROR: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'key(cliente_id) references clientes(cliente_id) on delete cascade on update casc' at line 1
+ MySQL  localhost:3306 ssl  eva_1  SQL > create table ventas( venta_id int not null auto_increment key, cliente_id int not null, foreing key(cliente_id), references clientes(cliente_id) on delete cascade on update cascade);
+ERROR: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'key(cliente_id), references clientes(cliente_id) on delete cascade on update cas' at line 1
+ MySQL  localhost:3306 ssl  eva_1  SQL > create table ventas( venta_id int not null auto_increment key);
+Query OK, 0 rows affected (0.6149 sec)
+ MySQL  localhost:3306 ssl  eva_1  SQL > delete table ventas;
+ERROR: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'table ventas' at line 1
+ MySQL  localhost:3306 ssl  eva_1  SQL > drop table ventas;
+Query OK, 0 rows affected (0.5711 sec)
+ MySQL  localhost:3306 ssl  eva_1  SQL > create table ventas( venta_id int not null auto_increment key, cliente_id int not null, foreign key(cliente_id), references clientes(cliente_id) on delete cascade on update cascade);
+ERROR: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ', references clientes(cliente_id) on delete cascade on update cascade)' at line 1
+ MySQL  localhost:3306 ssl  eva_1  SQL > create table ventas( venta_id int not null auto_increment key, cliente_id int not null, foreign key(cliente_id) references clientes(cliente_id) on delete cascade on update cascade);
+Query OK, 0 rows affected (0.9015 sec)
+ MySQL  localhost:3306 ssl  eva_1  SQL >
+
+
+
+
+prubea
+
+
+
+ MySQL  localhost:3306 ssl  eva_1  SQL > show tables;
++--------------------+
+| Tables_in_eva_1    |
++--------------------+
+| alumnos            |
+| carreras           |
+| clientes           |
+| country            |
+| materias           |
+| materias2          |
+| paises             |
+| prueba             |
+| prueba_copia       |
+| prueba_copia_datos |
+| subjects           |
+| ventas             |
++--------------------+
+12 rows in set (0.0025 sec)
+ MySQL  localhost:3306 ssl  eva_1  SQL > show create table ventas;
++--------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Table  | Create Table                                                                                                                                                                                                                                                                                                                                                              |
++--------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| ventas | CREATE TABLE `ventas` (
+  `venta_id` int(11) NOT NULL AUTO_INCREMENT,
+  `cliente_id` int(11) NOT NULL,
+  PRIMARY KEY (`venta_id`),
+  KEY `cliente_id` (`cliente_id`),
+  CONSTRAINT `ventas_ibfk_1` FOREIGN KEY (`cliente_id`) REFERENCES `clientes` (`cliente_id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci |
++--------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+1 row in set (0.1068 sec)
+ MySQL  localhost:3306 ssl  eva_1  SQL > insert into ventas(cliente_id)
+                                      -> values(5);
+ERROR: 1452 (23000): Cannot add or update a child row: a foreign key constraint fails (`eva_1`.`ventas`, CONSTRAINT `ventas_ibfk_1` FOREIGN KEY (`cliente_id`) REFERENCES `clientes` (`cliente_id`) ON DELETE CASCADE ON UPDATE CASCADE)
+ MySQL  localhost:3306 ssl  eva_1  SQL > insert into ventas(nombre) values('Juan'),('Pedro');
+ERROR: 1054 (42S22): Unknown column 'nombre' in 'field list'
+ MySQL  localhost:3306 ssl  eva_1  SQL > insert into ventas(nombre) values('Juan');
+ERROR: 1054 (42S22): Unknown column 'nombre' in 'field list'
+ MySQL  localhost:3306 ssl  eva_1  SQL > insert into Clientes(nombre) values('Juan'),('Pedro');
+Query OK, 2 rows affected (0.2103 sec)
+
+Records: 2  Duplicates: 0  Warnings: 0
+ MySQL  localhost:3306 ssl  eva_1  SQL > select * from clientes;
++------------+--------+
+| cliente_id | nombre |
++------------+--------+
+|          1 | Juan   |
+|          2 | Pedro  |
++------------+--------+
+2 rows in set (0.0015 sec)
+ MySQL  localhost:3306 ssl  eva_1  SQL > insert into ventas(cliente_id) values(1);
+Query OK, 1 row affected (0.1153 sec)
+ MySQL  localhost:3306 ssl  eva_1  SQL > insert into ventas(cliente_id) values(1);
+Query OK, 1 row affected (0.0858 sec)
+ MySQL  localhost:3306 ssl  eva_1  SQL > insert into ventas(cliente_id) values(2);
+Query OK, 1 row affected (0.1002 sec)
+ MySQL  localhost:3306 ssl  eva_1  SQL > insert into ventas(cliente_id) values(2);
+Query OK, 1 row affected (0.1735 sec)
+ MySQL  localhost:3306 ssl  eva_1  SQL > insert into ventas(cliente_id) values(2);
+Query OK, 1 row affected (0.0571 sec)
+ MySQL  localhost:3306 ssl  eva_1  SQL > select * from ventas;
++----------+------------+
+| venta_id | cliente_id |
++----------+------------+
+|        2 |          1 |
+|        3 |          1 |
+|        4 |          2 |
+|        5 |          2 |
+|        6 |          2 |
++----------+------------+
+5 rows in set (0.0017 sec)
+ MySQL  localhost:3306 ssl  eva_1  SQL > select *from ventas order by venta_id;
++----------+------------+
+| venta_id | cliente_id |
++----------+------------+
+|        2 |          1 |
+|        3 |          1 |
+|        4 |          2 |
+|        5 |          2 |
+|        6 |          2 |
++----------+------------+
+5 rows in set (0.0017 sec)
+ MySQL  localhost:3306 ssl  eva_1  SQL > delete *from clientes where cliente_id=2;
+ERROR: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '*from clientes where cliente_id=2' at line 1
+ MySQL  localhost:3306 ssl  eva_1  SQL > delete from clientes where cliente_id=2;
+Query OK, 1 row affected (0.2633 sec)
+ MySQL  localhost:3306 ssl  eva_1  SQL > select * from clientes;
++------------+--------+
+| cliente_id | nombre |
++------------+--------+
+|          1 | Juan   |
++------------+--------+
+1 row in set (0.0013 sec)
+ MySQL  localhost:3306 ssl  eva_1  SQL > select * from ventas;
++----------+------------+
+| venta_id | cliente_id |
++----------+------------+
+|        2 |          1 |
+|        3 |          1 |
++----------+------------+
+2 rows in set (0.0016 sec)
+ MySQL  localhost:3306 ssl  eva_1  SQL > update clientes
+                                      -> set
+                                      -> cliente_id=5
+                                      -> where cliente_id=1;
+Query OK, 1 row affected (0.2585 sec)
+
+Rows matched: 1  Changed: 1  Warnings: 0
+ MySQL  localhost:3306 ssl  eva_1  SQL > select * from clientes;
++------------+--------+
+| cliente_id | nombre |
++------------+--------+
+|          5 | Juan   |
++------------+--------+
+1 row in set (0.0007 sec)
+ MySQL  localhost:3306 ssl  eva_1  SQL > select * from ventas;
++----------+------------+
+| venta_id | cliente_id |
++----------+------------+
+|        2 |          5 |
+|        3 |          5 |
++----------+------------+
+2 rows in set (0.0016 sec)
+ MySQL  localhost:3306 ssl  eva_1  SQL > create table ventas2(
+                                      -> venta_id int not null auto_increment key,
+                                      -> cliente_id int not null);
+Query OK, 0 rows affected (0.7684 sec)
+ MySQL  localhost:3306 ssl  eva_1  SQL > insert into ventas2(cliente_id) values(5);
+Query OK, 1 row affected (0.1398 sec)
+ MySQL  localhost:3306 ssl  eva_1  SQL > insert into ventas2(cliente_id) values(5);
+Query OK, 1 row affected (0.4372 sec)
+ MySQL  localhost:3306 ssl  eva_1  SQL > insert into ventas2(cliente_id) values(5);
+Query OK, 1 row affected (0.1307 sec)
+ MySQL  localhost:3306 ssl  eva_1  SQL > select * from ventas;
++----------+------------+
+| venta_id | cliente_id |
++----------+------------+
+|        2 |          5 |
+|        3 |          5 |
++----------+------------+
+2 rows in set (0.0014 sec)
+ MySQL  localhost:3306 ssl  eva_1  SQL > select * from ventas2;
++----------+------------+
+| venta_id | cliente_id |
++----------+------------+
+|        1 |          5 |
+|        2 |          5 |
+|        3 |          5 |
++----------+------------+
+3 rows in set (0.0007 sec)
+ MySQL  localhost:3306 ssl  eva_1  SQL > delete from clientes
+                                      -> where cliente_id=5;
+Query OK, 1 row affected (0.1930 sec)
+ MySQL  localhost:3306 ssl  eva_1  SQL > select * from clientes;
+Empty set (0.0015 sec)
+ MySQL  localhost:3306 ssl  eva_1  SQL > insert into Clientes(nombre) values('Juan'),('Pedro');
+Query OK, 2 rows affected (0.1852 sec)
+
+Records: 2  Duplicates: 0  Warnings: 0
+ MySQL  localhost:3306 ssl  eva_1  SQL > select * from clientes;
++------------+--------+
+| cliente_id | nombre |
++------------+--------+
+|          6 | Juan   |
+|          7 | Pedro  |
++------------+--------+
+2 rows in set (0.0018 sec)
+ MySQL  localhost:3306 ssl  eva_1  SQL > delete from clientes where cliente_id=6;
+Query OK, 1 row affected (0.1846 sec)
+ MySQL  localhost:3306 ssl  eva_1  SQL > drop table ventas2;
+Query OK, 0 rows affected (0.6071 sec)
+ MySQL  localhost:3306 ssl  eva_1  SQL > create table ventas2( venta_id int not null auto_increment key, cliente_id int not null,foreign key(cliente_id) references clientes(clientes_id) on delete restrict on u
+ MySQL  localhost:3306 ssl  eva_1  SQL >                 tas2( venta_id int not null auto_increment key, cliente_id int not null,foreign key(cliente_id) references clie MySQL  localhost:3306 ssl  eva_1  SQL > pdate restrict);tas2( venta_id int not null auto_increment key, cliente_id int not null,foreign key(cliente_id) references clie MySQL  localhost:3306 ssl  eva_1  SQL > pdate restrict);
+ MySQL  localhost:3306 ssl  eva_1  SQL >
+ MySQL  localhost:3306 ssl  eva_1  SQL >
+ MySQL  localhost:3306 ssl  eva_1  SQL >
+ MySQL  localhost:3306 ssl  eva_1  SQL >
+ MySQL  localhost:3306 ssl  eva_1  SQL >
+ MySQL  localhost:3306 ssl  eva_1  SQL > create table ventas2( venta_id int not null auto_increment key,cliente_id int not null,foreign key(cliente_id) references clientes(clientes_id) on delete restrict on update restrict);
+ERROR: 3734 (HY000): Failed to add the foreign key constraint. Missing column 'clientes_id' for constraint 'ventas2_ibfk_1' in the referenced table 'clientes'
+ MySQL  localhost:3306 ssl  eva_1  SQL > show tables;
++--------------------+
+| Tables_in_eva_1    |
++--------------------+
+| alumnos            |
+| carreras           |
+| clientes           |
+| country            |
+| materias           |
+| materias2          |
+| paises             |
+| prueba             |
+| prueba_copia       |
+| prueba_copia_datos |
+| subjects           |
+| ventas             |
++--------------------+
+12 rows in set (0.0845 sec)
+ MySQL  localhost:3306 ssl  eva_1  SQL > create table ventas2(
+                                      -> venta_id int not null auto_increment key,
+                                      -> cliente_id int not null,
+                                      -> foreign key(cliente_id) references clientes('cliente_id') on delete restrict on update restrict);
+ERROR: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''cliente_id') on delete restrict on update restrict)' at line 4
+ MySQL  localhost:3306 ssl  eva_1  SQL > create table ventas2( venta_id int not null auto_increment key, cliente_id int not null, foreign key(cliente_id) references clientes(cliente_id) on delete restrict on update restrict);
+Query OK, 0 rows affected (1.3796 sec)
+ MySQL  localhost:3306 ssl  eva_1  SQL > insert into ventas2(cliente_id) values(5);ERROR: 1452 (23000): Cannot add or update a child row: a foreign key constraint fails (`eva_1`.`ventas2`, CONSTRAINT `ventas2_ibfk_1` FOREIGN KEY (`cliente_id`) REFERENCES `clientes` (`cliente_id`) ON DELETE RESTRICT ON UPDATE RESTRICT)
+ MySQL  localhost:3306 ssl  eva_1  SQL > insert into ventas2(cliente_id) values(5);
+
+ERROR: 1452 (23000): Cannot add or update a child row: a foreign key constraint fails (`eva_1`.`ventas2`, CONSTRAINT `ventas2_ibfk_1` FOREIGN KEY (`cliente_id`) REFERENCES `clientes` (`cliente_id`) ON DELETE RESTRICT ON UPDATE RESTRICT)
+ MySQL  localhost:3306 ssl  eva_1  SQL > select * from clientes;
++------------+--------+
+| cliente_id | nombre |
++------------+--------+
+|          7 | Pedro  |
++------------+--------+
+1 row in set (0.0032 sec)
+ MySQL  localhost:3306 ssl  eva_1  SQL > select * from clientes;
++------------+--------+
+| cliente_id | nombre |
++------------+--------+
+|          7 | Pedro  |
++------------+--------+
+1 row in set (0.0014 sec)
+ MySQL  localhost:3306 ssl  eva_1  SQL > select * from ventas2;
+Empty set (0.0013 sec)
+ MySQL  localhost:3306 ssl  eva_1  SQL > insert into ventas2(cliente_id) values(7);
+Query OK, 1 row affected (0.1084 sec)
+ MySQL  localhost:3306 ssl  eva_1  SQL > insert into ventas2(cliente_id) values(7);
+Query OK, 1 row affected (0.1654 sec)
+ MySQL  localhost:3306 ssl  eva_1  SQL > insert into ventas2(cliente_id) values(7);
+Query OK, 1 row affected (0.1975 sec)
+ MySQL  localhost:3306 ssl  eva_1  SQL > select * from ventas2;
++----------+------------+
+| venta_id | cliente_id |
++----------+------------+
+|        3 |          7 |
+|        4 |          7 |
+|        5 |          7 |
++----------+------------+
+3 rows in set (0.0014 sec)
+ MySQL  localhost:3306 ssl  eva_1  SQL > delete from clientes where cliente_id=7;
+ERROR: 1451 (23000): Cannot delete or update a parent row: a foreign key constraint fails (`eva_1`.`ventas2`, CONSTRAINT `ventas2_ibfk_1` FOREIGN KEY (`cliente_id`) REFERENCES `clientes` (`cliente_id`) ON DELETE RESTRICT ON UPDATE RESTRICT)
+ MySQL  localhost:3306 ssl  eva_1  SQL > create table materias3(
+                                      -> nombre varchar(50) not null,
+                                      -> carrera_id int not null auto_increment key);
+Query OK, 0 rows affected (0.6364 sec)
+ MySQL  localhost:3306 ssl  eva_1  SQL >

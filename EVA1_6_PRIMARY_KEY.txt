@@ -1,0 +1,265 @@
+Microsoft Windows [Versión 10.0.17763.292]
+(c) 2018 Microsoft Corporation. Todos los derechos reservados.
+
+C:\Users\Usuario>mysqlsh
+MySQL Shell 8.0.17
+
+Copyright (c) 2016, 2019, Oracle and/or its affiliates. All rights reserved.
+Oracle is a registered trademark of Oracle Corporation and/or its affiliates.
+Other names may be trademarks of their respective owners.
+
+Type '\help' or '\?' for help; '\quit' to exit.
+ MySQL  JS >  'sql
+SyntaxError: Invalid or unexpected token
+ MySQL  JS > \sql
+Switching to SQL mode... Commands end with ;
+ MySQL  SQL > \connect --mc root@localhost
+Creating a Classic session to 'root@localhost'
+Please provide the password for 'root@localhost': ******************
+Save password for 'root@localhost'? [Y]es/[N]o/Ne[v]er (default No): n
+Fetching schema names for autocompletion... Press ^C to stop.
+Your MySQL connection id is 8
+Server version: 8.0.17 MySQL Community Server - GPL
+No default schema selected; type \use <schema> to set one.
+ MySQL  localhost:3306 ssl  SQL > use eva1
+MySQL Error-1049: Unknown database 'eva1'
+ MySQL  localhost:3306 ssl  SQL > shoe databases;
+ERROR: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'shoe databases' at line 1
+ MySQL  localhost:3306 ssl  SQL > show databases;
++--------------------+
+| Database           |
++--------------------+
+| copia_eva_1        |
+| datoscoches        |
+| eva_1              |
+| information_schema |
+| mysql              |
+| performance_schema |
+| prueba             |
+| sys                |
++--------------------+
+8 rows in set (0.0016 sec)
+ MySQL  localhost:3306 ssl  SQL > use eva_1;
+Default schema set to `eva_1`.
+Fetching table and column names from `eva_1` for auto-completion... Press ^C to stop.
+ MySQL  localhost:3306 ssl  eva_1  SQL > show tables
+                                      -> ;
++--------------------+
+| Tables_in_eva_1    |
++--------------------+
+| carreras           |
+| country            |
+| materias           |
+| paises             |
+| prueba             |
+| prueba_copia       |
+| prueba_copia_datos |
++--------------------+
+7 rows in set (0.0031 sec)
+ MySQL  localhost:3306 ssl  eva_1  SQL > show create table carreras;
++----------+----------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Table    | Create Table                                                                                                                                                   |
++----------+----------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| carreras | CREATE TABLE `carreras` (
+  `nombre` varchar(50) NOT NULL,
+  UNIQUE KEY `nombre` (`nombre`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci |
++----------+----------------------------------------------------------------------------------------------------------------------------------------------------------------+
+1 row in set (0.0390 sec)
+ MySQL  localhost:3306 ssl  eva_1  SQL > selec * from carreras;
+ERROR: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'selec * from carreras' at line 1
+ MySQL  localhost:3306 ssl  eva_1  SQL > select * from carreras;
++--------+
+| nombre |
++--------+
+|        |
++--------+
+1 row in set (0.0595 sec)
+ MySQL  localhost:3306 ssl  eva_1  SQL > insert into carreras values ('INFORMATICA');
+Query OK, 1 row affected (0.2097 sec)
+ MySQL  localhost:3306 ssl  eva_1  SQL > select * from carreras;
++-------------+
+| nombre      |
++-------------+
+|             |
+| INFORMATICA |
++-------------+
+2 rows in set (0.0014 sec)
+ MySQL  localhost:3306 ssl  eva_1  SQL > insert into carreras values ('INFORMATICA');
+ERROR: 1062 (23000): Duplicate entry 'INFORMATICA' for key 'nombre'
+ MySQL  localhost:3306 ssl  eva_1  SQL > create table subjects(
+                                      -> name varchar(50) not null key
+                                      -> , creditos int not null default 5);
+Query OK, 0 rows affected (0.7595 sec)
+ MySQL  localhost:3306 ssl  eva_1  SQL > show create table subjects;
++----------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Table    | Create Table                                                                                                                                                                                  |
++----------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| subjects | CREATE TABLE `subjects` (
+  `name` varchar(50) NOT NULL,
+  `creditos` int(11) NOT NULL DEFAULT '5',
+  PRIMARY KEY (`name`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci |
++----------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+1 row in set (0.0034 sec)
+ MySQL  localhost:3306 ssl  eva_1  SQL > insert into subjects values('TBD',4),('EDD',5),('ARQ',5);
+Query OK, 3 rows affected (0.1438 sec)
+
+Records: 3  Duplicates: 0  Warnings: 0
+ MySQL  localhost:3306 ssl  eva_1  SQL > SELECT FROM* SUBJECTS;
+ERROR: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'FROM* SUBJECTS' at line 1
+ MySQL  localhost:3306 ssl  eva_1  SQL > select *from subjects;
++------+----------+
+| name | creditos |
++------+----------+
+| ARQ  |        5 |
+| EDD  |        5 |
+| TBD  |        4 |
++------+----------+
+3 rows in set (0.0013 sec)
+ MySQL  localhost:3306 ssl  eva_1  SQL > insert into subjects values('TBD',4);
+ERROR: 1062 (23000): Duplicate entry 'TBD' for key 'PRIMARY'
+ MySQL  localhost:3306 ssl  eva_1  SQL > create table materias2(
+                                      -> nombre varchar(50) not null,
+                                      -> creditos int default 5,
+                                      -> carrera varchar(50) not null,
+                                      -> primary key (nombre,carrera));
+Query OK, 0 rows affected (0.6300 sec)
+ MySQL  localhost:3306 ssl  eva_1  SQL > show create table materias2;
++-----------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Table     | Create Table                                                                                                                                                                                                                          |
++-----------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| materias2 | CREATE TABLE `materias2` (
+  `nombre` varchar(50) NOT NULL,
+  `creditos` int(11) DEFAULT '5',
+  `carrera` varchar(50) NOT NULL,
+  PRIMARY KEY (`nombre`,`carrera`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci |
++-----------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+1 row in set (0.0033 sec)
+ MySQL  localhost:3306 ssl  eva_1  SQL > insert into materias2 values(
+                                      -> 'EDD',5,'SISTEMAS');
+Query OK, 1 row affected (0.0795 sec)
+ MySQL  localhost:3306 ssl  eva_1  SQL > insert into materias2 values( 'EDD',5,'INFORMATICA');
+Query OK, 1 row affected (0.1772 sec)
+ MySQL  localhost:3306 ssl  eva_1  SQL > insert into materias2 values( 'EDD',5,'ARQUITECTURA');
+Query OK, 1 row affected (0.1595 sec)
+ MySQL  localhost:3306 ssl  eva_1  SQL > insert into materias2 values( 'EDD',5,'ARQUITECTURA');
+ERROR: 1062 (23000): Duplicate entry 'EDD-ARQUITECTURA' for key 'PRIMARY'
+ MySQL  localhost:3306 ssl  eva_1  SQL > SHOW TABLES;
++--------------------+
+| Tables_in_eva_1    |
++--------------------+
+| carreras           |
+| country            |
+| materias           |
+| materias2          |
+| paises             |
+| prueba             |
+| prueba_copia       |
+| prueba_copia_datos |
+| subjects           |
++--------------------+
+9 rows in set (0.0036 sec)
+ MySQL  localhost:3306 ssl  eva_1  SQL > create table alumnos(
+                                      -> no_control int not null auto_increment key,
+                                      -> nombre varchar(50));
+Query OK, 0 rows affected (0.8043 sec)
+ MySQL  localhost:3306 ssl  eva_1  SQL > insert into alumnos('nombre')
+                                      -> values('David);
+                                      '> ';
+ERROR: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''nombre')
+values('David);
+'' at line 1
+ MySQL  localhost:3306 ssl  eva_1  SQL > insert into alumnos(NOMBRE) values('David'),('PEDRO');
+Query OK, 2 rows affected (0.1532 sec)
+
+Records: 2  Duplicates: 0  Warnings: 0
+ MySQL  localhost:3306 ssl  eva_1  SQL > SELECT * FROM ALUMNOS;
++------------+--------+
+| no_control | nombre |
++------------+--------+
+|          1 | David  |
+|          2 | PEDRO  |
++------------+--------+
+2 rows in set (0.0013 sec)
+ MySQL  localhost:3306 ssl  eva_1  SQL > insert into alumnos(NOMBRE) values('pablo');
+Query OK, 1 row affected (0.1582 sec)
+ MySQL  localhost:3306 ssl  eva_1  SQL > SELECT * FROM ALUMNOS;
++------------+--------+
+| no_control | nombre |
++------------+--------+
+|          1 | David  |
+|          2 | PEDRO  |
+|          3 | pablo  |
++------------+--------+
+3 rows in set (0.0013 sec)
+ MySQL  localhost:3306 ssl  eva_1  SQL > delete from alumnos
+                                      -> where no_control=3;
+Query OK, 1 row affected (0.3850 sec)
+ MySQL  localhost:3306 ssl  eva_1  SQL > insert into alumnos(NOMBRE) values('pablo');
+Query OK, 1 row affected (0.1370 sec)
+ MySQL  localhost:3306 ssl  eva_1  SQL > SELECT * FROM ALUMNOS;
++------------+--------+
+| no_control | nombre |
++------------+--------+
+|          1 | David  |
+|          2 | PEDRO  |
+|          4 | pablo  |
++------------+--------+
+3 rows in set (0.0008 sec)
+ MySQL  localhost:3306 ssl  eva_1  SQL > show create table alumnos;
++---------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Table   | Create Table                                                                                                                                                                                                                   |
++---------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| alumnos | CREATE TABLE `alumnos` (
+  `no_control` int(11) NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`no_control`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci |
++---------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+1 row in set (0.0017 sec)
+ MySQL  localhost:3306 ssl  eva_1  SQL > insert into alumnos values('pablo',7);
+ERROR: 1366 (HY000): Incorrect integer value: 'pablo' for column 'no_control' at row 1
+ MySQL  localhost:3306 ssl  eva_1  SQL > insert into alumnos values('jor',7);
+ERROR: 1366 (HY000): Incorrect integer value: 'jor' for column 'no_control' at row 1
+ MySQL  localhost:3306 ssl  eva_1  SQL > insert into alumnos values(7,'JORGE');
+Query OK, 1 row affected (0.4140 sec)
+ MySQL  localhost:3306 ssl  eva_1  SQL > SELECT * FROM ALUMNOS;
++------------+--------+
+| no_control | nombre |
++------------+--------+
+|          1 | David  |
+|          2 | PEDRO  |
+|          4 | pablo  |
+|          7 | JORGE  |
++------------+--------+
+4 rows in set (0.0019 sec)
+ MySQL  localhost:3306 ssl  eva_1  SQL > insert into alumnos(NOMBRE) values('RAUL');
+Query OK, 1 row affected (0.2820 sec)
+ MySQL  localhost:3306 ssl  eva_1  SQL > SELECT * FROM ALUMNOS;
++------------+--------+
+| no_control | nombre |
++------------+--------+
+|          1 | David  |
+|          2 | PEDRO  |
+|          4 | pablo  |
+|          7 | JORGE  |
+|          8 | RAUL   |
++------------+--------+
+5 rows in set (0.0014 sec)
+ MySQL  localhost:3306 ssl  eva_1  SQL > insert into alumnos(NOMBRE) values('RAUL');
+Query OK, 1 row affected (0.3555 sec)
+ MySQL  localhost:3306 ssl  eva_1  SQL > SELECT * FROM ALUMNOS;
++------------+--------+
+| no_control | nombre |
++------------+--------+
+|          1 | David  |
+|          2 | PEDRO  |
+|          4 | pablo  |
+|          7 | JORGE  |
+|          8 | RAUL   |
+|          9 | RAUL   |
++------------+--------+
+6 rows in set (0.0013 sec)
+ MySQL  localhost:3306 ssl  eva_1  SQL >
